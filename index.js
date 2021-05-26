@@ -113,18 +113,15 @@ const LolKey = 'Ini Apikey'                 //LOLHUMAN
     		zay.message = (Object.keys(zay.message)[0] === 'ephemeralMessage') ? zay.message.ephemeralMessage.message : zay.message
   			global.blocked
   			
-  			const content = JSON.stringify(zay.message)
-  			const from = zay.key.remoteJid
-  			const type = Object.keys(zay.message)[0]
-			
-			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
+  	    const content = JSON.stringify(zay.message)
+  	    const from = zay.key.remoteJid
+  	    const type = Object.keys(zay.message)[0]
+            const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
             const date = new Date().toLocaleDateString()
             const jam = moment.tz('Asia/Jakarta').format("HH:mm:ss DD:MM:YYYY")
             const wita = moment.tz('Asia/Makassar').format("HH:mm:ss DD:MM:YYYY")
             const wit = moment.tz('Asia/Jayapura').format("HH:mm:ss DD:MM:YYYY")
-    		const apiKey = setting.apiKey 
-    			
-      
+    	    const apiKey = setting.apiKey 
             const { text, extendedText, contact, caption, location, liveLocation, image, video,quotedMsgObj, sticker, document, audio, product } = MessageType
   	    const mentionByTag = type == "extendedTextMessage" && zay.message.extendedTextMessage.contextInfo != null ? zay.message.extendedTextMessage.contextInfo.mentionedJid : []
 	    const mentionByReply = type == "extendedTextMessage" && zay.message.extendedTextMessage.contextInfo != null ? zay.message.extendedTextMessage.contextInfo.participant || "" : ""
@@ -134,7 +131,6 @@ const LolKey = 'Ini Apikey'                 //LOLHUMAN
 	    var pes = (type === 'conversation' && zay.message.conversation) ? zay.message.conversation : (type == 'imageMessage') && zay.message.imageMessage.caption ? zay.message.imageMessage.caption : (type == 'videoMessage') && zay.message.videoMessage.caption ? zay.message.videoMessage.caption : (type == 'extendedTextMessage') && zay.message.extendedTextMessage.text ? zay.message.extendedTextMessage.text : ''
 	    const messagesC = pes.slice(0).trim()
 		
-	
      //BY TANAKA (ALL PREFIX)
             const cmd = (type === 'conversation' && zay.message.conversation) ? zay.message.conversation : (type == 'imageMessage') && zay.message.imageMessage.caption ? zay.message.imageMessage.caption : (type == 'videoMessage') && zay.message.videoMessage.caption ? zay.message.videoMessage.caption : (type == 'extendedTextMessage') && zay.message.extendedTextMessage.text ? zay.message.extendedTextMessage.text : ''.slice(1).trim().split(/ +/).shift().toLowerCase()
             const prefix = /^[°•π÷×¶∆£¢€¥®™✓=|~zZ+×_*!#$%^&./\\©^]/.test(cmd) ? cmd.match(/^[°•π÷×¶∆£¢€¥®™✓=|~xzZ+×_*!#$,|`÷?;:%^&./\\©^]/gi) : '-'	  
@@ -163,7 +159,7 @@ const LolKey = 'Ini Apikey'                 //LOLHUMAN
 				}
 			}
 			
-            const totalchat = await zayy.chats.all()
+                        const totalchat = await zayy.chats.all()
 			const botNumber = zayy.user.jid
 			const ownerNumber = [`${setting.ownerNumber}@s.whatsapp.net`] 
 			const isGroup = from.endsWith('@g.us')
@@ -184,7 +180,7 @@ const LolKey = 'Ini Apikey'                 //LOLHUMAN
 			const isSimi = isGroup ? samih.includes(from) : false
 			const isOwner = ownerNumber.includes(sender)
 			const q = args.join(' ')
-		    conts = zay.key.fromMe ? zayy.user.jid : zayy.contacts[sender] || { notify: jid.replace(/@.+/, '') }
+		        conts = zay.key.fromMe ? zayy.user.jid : zayy.contacts[sender] || { notify: jid.replace(/@.+/, '') }
                         const pushname = zay.key.fromMe ? zayy.user.name : conts.notify || conts.vname || conts.name || '-'
 
 			const isUrl = (url) => {
